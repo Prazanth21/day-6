@@ -1,0 +1,40 @@
+using System;
+
+public interface IShape
+{
+    double CalculateArea();
+}
+
+public interface IColor
+{
+    string GetColor();
+}
+
+public class ColoredCircle : IShape, IColor
+{
+    private double Radius { get; set; }
+    private string Color { get; set; }
+
+    public ColoredCircle(double radius, string color)
+    {
+        Radius = radius;
+        Color = color;
+    }
+
+    public double CalculateArea() => Math.PI * Radius * Radius;
+
+    public string GetColor() => Color;
+}
+
+class Program
+{
+    static void Main()
+    {
+        ColoredCircle obj = new ColoredCircle(5, "Red");
+
+        Console.WriteLine($"Area: {obj.CalculateArea()}");
+        Console.WriteLine($"Color: {obj.GetColor()}");
+    }
+}
+/*Area: 78.53981633974483
+Color: Red*/
